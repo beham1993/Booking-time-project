@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% load l10n %}
+
+{% block title %}{{ person_last_name }}{% endblock %}
+
+{% block body_block %}
+<h2>Прізвище: {{ person_last_name }}</h2>
+<h2>Ім'я: {{ person_first_name }}</h2>
+<h2>Місто: {{ person_city }}</h2>
+<h2>Організація: {{ person_organization_name }}</h2>
+<h2>Номер телефону: {{ person_number }}</h2>
+<h2>Дата зустрічі: {{ person_date }}</h2>
+<h2>Час зустрічі: {{ person_time|time:"H:i" }}</h2>
+
+{% endblock %}

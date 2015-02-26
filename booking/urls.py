@@ -8,6 +8,7 @@ urlpatterns = patterns('',
                        url(r'^booking_today/$', views.booking_today, name='booking_today'),
                        url(r'^person/$', views.person, name='person'),
                        url(r'^person/(?P<person_last_name_slug>[\w\-]+)/$', views.person, name='person'),
+                       url(r'^(?P<person_city>[\w\-]+)/$', views.booking_city, name='booking_city')
 
 
                        )
