@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% load l10n %}
+
+{% block title %}{{ person_last_name }}{% endblock %}
+
+{% block body_block %}
+<h2>Прізвище: {{ person_last_name }}</h2>
+<h2>Ім'я: {{ person_first_name }}</h2>
+<h2>Місто: {{ person_city }}</h2>
+<h2>Організація: {{ person_organization_name }}</h2>
+<h2>Номер телефону: {{ person_number }}</h2>
+<h2>Дата зустрічі: {{ person_date }}</h2>
+<h2>Час зустрічі: {{ person.time|time:"H:i" }}</h2>
+<!--  {% if person %}
+    {% if pages %}
+    <ul>
+        {% for page in pages %}
+        <li>
+            <a href="{% url 'goto' %}?page_id={{page.id}}">{{ page.title }}</a>
+            {% if page.views > 1 %}
+            ({{ page.views }} views)
+            {% elif page.views == 1 %}
+            ({{ page.views }} view)
+            {% endif %}
+        </li>
+        {% endfor %}
+
+    </ul>
+    {% else %}
+    <strong>No pages currently in category.</strong>
+    {% endif %}
+
+{% if user.is_authenticated %}
+<a href="/booking/person/{{person.slug}}/add_page/">Add a Page</a><hr />
+{% endif %}
+{% else %}
+The specified category {{ person_last_name }} does not exist!
+{% endif %}  -->
+
+
+
+{% endblock %}

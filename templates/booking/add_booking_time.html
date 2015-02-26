@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body_block %}
+
+<form role="form"  id="booking_time_form" method="post" action="/add_booking_time/">
+    <h2 class="form-signin-heading">Забронювати зустріч</h2>
+
+    {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+    {{ field.errors }}
+    {{ field.help_text }}<br/>
+    {{ field }}<br/>
+    {% endfor %}
+    <br/>
+    <button class="btn btn-primary" type="submit" name="submit">Забронювати</button>
+</form>
+{% endblock %}
