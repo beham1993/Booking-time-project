@@ -9,7 +9,7 @@ def index(request):
     context_dict = {}
     person_list = Person.objects.order_by('-last_name')[:10]
     context_dict['persons'] = person_list
-    cities = ["Донецьк","Київ","Львів","Луцьк","Одеса","Харків"]
+    cities = ["Київ","Донецьк","Львів","Луцьк","Одеса","Харків"]
     context_dict['cities'] = cities
 
     # Return response back to the user, updating any cookies that need changed.
@@ -20,6 +20,8 @@ def index(request):
 
 def person(request, person_last_name_slug):
     context_dict = {}
+    cities = ["Київ","Донецьк","Львів","Луцьк","Одеса","Харків"]
+    context_dict['cities'] = cities
 
     try:
         person = Person.objects.get(slug=person_last_name_slug)
@@ -49,6 +51,8 @@ def person(request, person_last_name_slug):
 def booking_today(request):
     person_list = Person.objects.filter(date=datetime.today())
     context_dict = {'persons': person_list}
+    cities = ["Київ","Донецьк","Львів","Луцьк","Одеса","Харків"]
+    context_dict['cities'] = cities
 
     response = render(request, 'booking/booking_today.html', context_dict)
     return response
@@ -56,6 +60,8 @@ def booking_today(request):
 # В’ю для списку записаних в конкретному місті на конкретну дату
 def booking_city(request, person_city):
     context_dict = {}
+    cities = ["Київ","Донецьк","Львів","Луцьк","Одеса","Харків"]
+    context_dict['cities'] = cities
     try:
         person = Person.objects.filter(city=person_city)
         for city_person in person:
@@ -77,6 +83,9 @@ def booking_city(request, person_city):
 
 
 def add_booking_time(request):
+    context_dict = {}
+    cities = ["Київ","Донецьк","Львів","Луцьк","Одеса","Харків"]
+    context_dict['cities'] = cities
     # A HTTP POST?
     if request.method == 'POST':
         form = PersonForm(request.POST)
@@ -98,4 +107,5 @@ def add_booking_time(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render(request, 'booking/add_booking_time.html', {'form': form})
+    context_dict['form'] = form
+    return render(request, 'booking/add_booking_time.html', context_dict)
