@@ -30,15 +30,4 @@
         {% endif %}
     </div>
 </div>
-
-<div class="row placeholders">
-    <div class="col-xs-12 col-sm-6 placeholder">
-        <ul class="list-group">
-            {% for city in cities %}
-            <li class="list-group-item"><a href="{% url 'booking_city' city %}">{{ city }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
-
 {% endblock %}
